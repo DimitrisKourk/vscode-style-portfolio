@@ -1,0 +1,23 @@
+{
+  "whoami": "Dimitris Kourkoutas — junior full stack developer.",
+  "about": [
+    "Hi! I'm Dimitris Kourkoutas, a junior full stack developer.",
+    "I enjoy building things end to end, from the database to the UI."
+  ],
+  "skills": [
+    "Languages:  Java, JavaScript, HTML, CSS, SQL",
+    "Backend:    Spring Boot, Node.js",
+    "Frontend:   React",
+    "Tools:      Git, Linux, VS Code"
+  ],
+  "projects": [
+    "project-one  — short description",
+    "project-two  — short description",
+    "Open projects.js in the editor for details."
+  ],
+  "contact": [
+    "Email:    dimitriskourkoutas@yahoo.gr",
+    "GitHub:   https://github.com/DimitrisKourk",
+    "LinkedIn: https://www.linkedin.com/in/dimitriskourkoutas"
+  ]
+}

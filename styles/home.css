@@ -1,0 +1,130 @@
+/* ===== home.jsx view ===== */
+
+/* Centered hero, vertically centered in the editor */
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3em 2.5em;
+  background: radial-gradient(ellipse at 50% 45%, rgba(55, 148, 255, 0.06) 0%, transparent 65%);
+}
+
+.home__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+  max-width: 40em;
+  text-align: center;
+}
+
+/* JSX-style comment above the name */
+.home__greeting {
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.95em;
+  color: #6a9955;                       /* VS Code comment green */
+  letter-spacing: 0.03em;
+}
+
+.home__name {
+  font-size: 3.5em;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.home__role {
+  font-size: 1.15em;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.home__divider {
+  width: 4em;
+  height: 0.125em;
+  margin: 0.5em 0;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.6;
+}
+
+.home__description {
+  max-width: 34em;
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+.home__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75em;
+  margin-top: 1em;
+}
+
+.home__links {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-top: 1.5em;
+  padding-top: 2em;
+  border-top: thin solid var(--border-subtle);
+}
+
+.home__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.4em 0.6em;
+  font-size: 0.85em;
+  color: var(--text-faint);
+  text-decoration: none;
+  border-radius: 0.3em;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.home__link:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.home__link:focus-visible {
+  outline: thin solid var(--accent);
+}
+
+/* Codicons ship with a fixed 16px size; override with em */
+.home__link .codicon {
+  font-size: 1.15em;
+}
+
+.home__separator {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+/* ----- Medium screens ----- */
+@media (max-width: 64em) {
+  .home__name {
+    font-size: 3em;
+  }
+}
+
+/* ----- Small screens ----- */
+@media (max-width: 40em) {
+  .home {
+    padding: 2.5em 1.25em;
+  }
+
+  .home__name {
+    font-size: 2.25em;
+  }
+
+  .home__role {
+    font-size: 1em;
+  }
+
+  .home__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+}

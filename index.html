@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dimitris Kourkoutas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@vscode/codicons@0.0.46-24/dist/codicon.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.17.0/devicon.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/activity-bar.css">
+  <link rel="stylesheet" href="./styles/side-bar.css">
+  <link rel="stylesheet" href="./styles/title-bar.css">
+  <link rel="stylesheet" href="./styles/editor-tabs.css">
+  <link rel="stylesheet" href="./styles/status-bar.css">
+  <link rel="stylesheet" href="./styles/panel.css">
+  <link rel="stylesheet" href="./styles/notifications.css">
+  <link rel="stylesheet" href="./styles/home.css">
+  <link rel="stylesheet" href="./styles/editor.css">
+  <link rel="stylesheet" href="./styles/about.css">
+  <link rel="stylesheet" href="./styles/contact.css">
+  <link rel="stylesheet" href="./styles/doom.css">
+
+  <script src="./scripts/doom.js" defer></script> 
+  <script src="./scripts/files.js" defer></script>
+  <script src="./scripts/side-bar.js" defer></script>
+  <script src="./scripts/editor-tabs.js" defer></script>
+  <script src="./scripts/status-bar.js" defer></script>
+  <script src="./scripts/notifications.js" defer></script>
+  <script src="./scripts/panel.js" defer></script>
+  <script src="./scripts/activity-bar.js" defer></script>
+  <script src="./scripts/editor.js" defer></script>
+</head>
+<body>
+  <div class="app">
+
+    <!-- Title bar -->
+    <header class="title-bar">
+        <div class="title-bar__left">
+            <i class="title-bar__icon codicon codicon-vscode"></i>
+            <nav class="title-bar__menu">
+            <button type="button">File</button>
+            <button type="button">Edit</button>
+            <button type="button">Selection</button>
+            <button type="button">View</button>
+            <button type="button">Go</button>
+            <button type="button">Run</button>
+            <button type="button">Terminal</button>
+            <button type="button">Help</button>
+            </nav>
+        </div>
+
+        <div class="title-bar__center">
+            <div class="title-bar__search">Dimitris-Kourkoutas-Portolio</div>
+        </div>
+
+        <div class="title-bar__controls">
+            <button type="button" class="title-bar__control" aria-label="Minimize"><i class="codicon codicon-chrome-minimize"></i></button>
+            <button type="button" class="title-bar__control" aria-label="Maximize"><i class="codicon codicon-chrome-maximize"></i></button>
+            <button type="button" class="title-bar__control title-bar__control--close" aria-label="Close"><i class="codicon codicon-chrome-close"></i></button>
+        </div>
+    </header>
+
+    <!-- Activity bar -->
+    <nav class="activity-bar">
+        <div class="activity-bar__group">
+            <button type="button" class="activity-bar__item" data-view="explorer" title="Explorer" aria-label="Explorer" aria-expanded="true"><i class="codicon codicon-files"></i></button>
+            <button type="button" class="activity-bar__item" data-view="search" title="Search" aria-label="Search"><i class="codicon codicon-search"></i></button>
+            <button type="button" class="activity-bar__item" data-view="source-control" title="Source Control" aria-label="Source Control"><i class="codicon codicon-source-control"></i></button>
+            <button type="button" class="activity-bar__item" data-view="run" title="Run and Debug" aria-label="Run and Debug"><i class="codicon codicon-debug-alt"></i></button>
+            <button type="button" class="activity-bar__item" data-view="extensions" title="Extensions" aria-label="Extensions"><i class="codicon codicon-extensions"></i></button>
+        </div>
+
+        <div class="activity-bar__group">
+            <button type="button" class="activity-bar__item" data-view="accounts" title="Accounts" aria-label="Accounts"><i class="codicon codicon-account"></i></button>
+            <button type="button" class="activity-bar__item" data-view="settings" title="Settings" aria-label="Settings"><i class="codicon codicon-settings-gear"></i></button>
+        </div>
+    </nav>
+
+    <!-- Side bar / Explorer -->
+     <aside class="side-bar">
+        <div class="explorer__folder">
+            <input type="checkbox" id="folder-portfolio" class="explorer__toggle" checked>
+            <label for="folder-portfolio" class="explorer__folder-name">
+                <i class="codicon codicon-chevron-right explorer__chevron"></i>
+                <span>Portfolio Explorer</span>
+            </label>
+            <div class="explorer__actions">
+                <button type="button" class="explorer__action" data-action="new-file" title="New File" aria-label="New File"><i class="codicon codicon-new-file"></i></button>
+                <button type="button" class="explorer__action" data-action="new-folder" title="New Folder" aria-label="New Folder"><i class="codicon codicon-new-folder"></i></button>
+                <button type="button" class="explorer__action" data-action="refresh" title="Refresh Explorer" aria-label="Refresh Explorer"><i class="codicon codicon-refresh"></i></button>
+                <button type="button" class="explorer__action" data-action="collapse" title="Collapse Folders in Explorer" aria-label="Collapse Folders in Explorer"><i class="codicon codicon-collapse-all"></i></button>
+            </div>
+
+            <div class="explorer__folder-content">
+                <ul class="explorer__files">
+                    <li>
+                        <a href="#home" class="explorer__file">
+                            <span class="explorer__icon"><i class="devicon-react-original colored"></i></span>
+                            <span class="explorer__name">home.jsx</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about" class="explorer__file">
+                            <span class="explorer__icon"><i class="devicon-html5-plain colored"></i></span>
+                            <span class="explorer__name">about.html</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="explorer__file">
+                            <span class="explorer__icon">{...}</i></span>
+                            <span class="explorer__name">contact.json</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#projects" class="explorer__file">
+                            <span class="explorer__icon"><i class="devicon-javascript-plain colored"></i></span>
+                            <span class="explorer__name">projects.js</span>
+                        </a>
+                    </li>                
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <!-- Panel minimize state (must come before .workbench) -->
+    <input type="checkbox" id="panel-toggle" class="panel-toggle" aria-label="Minimize panel">
+    <!-- Main workbench: tabs, editor, panel -->
+    <main class="workbench">
+
+      <!-- Editor tabs -->
+      <div class="editor-tabs">
+        <div class="editor-tab editor-tab--active">
+            <a href="#home" class="editor-tab__link">
+            <span class="editor-tab__icon"><i class="devicon-react-original colored"></i></span>
+            <span class="editor-tab__name">home.jsx</span>
+            </a>
+            <button type="button" class="editor-tab__close" title="Close" aria-label="Close home.jsx"><i class="codicon codicon-close"></i></button>
+        </div>
+        <div class="editor-tab">
+            <a href="#about" class="editor-tab__link">
+            <span class="editor-tab__icon"><i class="devicon-html5-plain colored"></i></span>
+            <span class="editor-tab__name">about.html</span>
+            </a>
+            <button type="button" class="editor-tab__close" title="Close" aria-label="Close about.html"><i class="codicon codicon-close"></i></button>
+        </div>
+        <div class="editor-tab">
+            <a href="#contact" class="editor-tab__link">
+            <span class="editor-tab__icon">{...}</span>
+            <span class="editor-tab__name">contact.json</span>
+            </a>
+            <button type="button" class="editor-tab__close" title="Close" aria-label="Close contact.json"><i class="codicon codicon-close"></i></button>
+        </div>
+        <div class="editor-tab">
+            <a href="#projects" class="editor-tab__link">
+            <span class="editor-tab__icon"><i class="devicon-javascript-plain colored"></i></span>
+            <span class="editor-tab__name">projects.js</span>
+            </a>
+            <button type="button" class="editor-tab__close" title="Close" aria-label="Close projects.js"><i class="codicon codicon-close"></i></button>
+        </div>
+    </div>
+
+      <!-- Editor area -->
+      <section class="editor">
+            <div class="editor__inner">
+                <!-- Line numbers: filled by scripts/editor.js to match the content height -->
+                <div class="editor__gutter" aria-hidden="true"><ol></ol></div>
+
+                <div class="editor__content">
+                    <!-- ===== Empty editor: shown when every tab is closed =====
+     Keep the <pre> block flush left: whitespace inside it is displayed as-is -->
+<article class="editor-view code-view" data-empty hidden>
+<pre class="code-view__code"><code><span class="tok-comment">// No file is open. Pick one from the explorer, or type "help" in the terminal.</span>
+
+<span class="tok-control">import</span> <span class="tok-punct">{</span> <span class="tok-variable">createPortfolio</span> <span class="tok-punct">}</span> <span class="tok-control">from</span> <span class="tok-string">"./portfolio.js"</span><span class="tok-punct">;</span>
+
+<span class="tok-keyword">const</span> <span class="tok-variable">name</span> <span class="tok-punct">=</span> <span class="tok-string">"Dimitrios Kourkoutas"</span><span class="tok-punct">;</span>
+
+<span class="tok-keyword">async</span> <span class="tok-keyword">function</span> <span class="tok-function">welcome</span><span class="tok-punct">(</span><span class="tok-variable">name</span><span class="tok-punct">)</span> <span class="tok-punct">{</span>
+  <span class="tok-keyword">const</span> <span class="tok-variable">information</span> <span class="tok-punct">=</span> <span class="tok-control">await</span> <span class="tok-function">fetch</span><span class="tok-punct">(</span><span class="tok-string">`https://api.portfolio.dev/v1/users/</span><span class="tok-keyword">${</span><span class="tok-variable">name</span><span class="tok-keyword">}</span><span class="tok-string">`</span><span class="tok-punct">)</span>    
+  <span class="tok-punct">.</span><span class="tok-function">then</span><span class="tok-punct">((</span><span class="tok-variable">response</span><span class="tok-punct">)</span> <span class="tok-keyword">=&gt;</span> <span class="tok-variable">response</span><span class="tok-punct">.</span><span class="tok-function">json</span><span class="tok-punct">())</span>
+    <span class="tok-punct">.</span><span class="tok-function">then</span><span class="tok-punct">((</span><span class="tok-variable">data</span><span class="tok-punct">)</span> <span class="tok-keyword">=&gt;</span> <span class="tok-punct">({</span>
+      <span class="tok-variable">name</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">name</span><span class="tok-punct">,</span>           <span class="tok-comment">// "Dimitrios Kourkoutas"</span>
+      <span class="tok-variable">title</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">title</span><span class="tok-punct">,</span>         <span class="tok-comment">// "Full Stack Software Engineer"</span>
+      <span class="tok-variable">mail</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">mail</span><span class="tok-punct">,</span>           <span class="tok-comment">// "dimitriskourkoutas@yahoo.gr"</span>
+      <span class="tok-variable">linkedin</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">linkedin</span><span class="tok-punct">,</span>   <span class="tok-comment">// "linkedin.com/in/dimitriskourkoutas</span>
+      <span class="tok-variable">github</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">github</span><span class="tok-punct">,</span>       <span class="tok-comment">// "github.com/DimitrisKourk"</span>
+      <span class="tok-variable">bio</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">bio</span><span class="tok-punct">,</span>             <span class="tok-comment">// "Turning ideas into production-ready software."</span>
+      <span class="tok-variable">projects</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">projects</span><span class="tok-punct">,</span>   <span class="tok-comment">// ["Real-estate SaaS", "Photo Michalopoulos", "Chef for Crews"]</span>
+    <span class="tok-punct">}));</span>
+
+  <span class="tok-control">try</span> <span class="tok-punct">{</span>
+    <span class="tok-control">await</span> <span class="tok-function">createPortfolio</span><span class="tok-punct">(</span><span class="tok-variable">information</span><span class="tok-punct">);</span>
+    <span class="tok-type">console</span><span class="tok-punct">.</span><span class="tok-function">log</span><span class="tok-punct">(</span><span class="tok-string">`Welcome </span><span class="tok-keyword">${</span><span class="tok-variable">name</span><span class="tok-keyword">}</span><span class="tok-string"> to your portfolio website!`</span><span class="tok-punct">);</span>
+    <span class="tok-control">return</span><span class="tok-punct">;</span>
+  <span class="tok-punct">}</span> <span class="tok-control">catch</span> <span class="tok-punct">(</span><span class="tok-variable">error</span><span class="tok-punct">)</span> <span class="tok-punct">{</span>
+    <span class="tok-type">console</span><span class="tok-punct">.</span><span class="tok-function">error</span><span class="tok-punct">(</span><span class="tok-string">`Could not create the portfolio: </span><span class="tok-keyword">${</span><span class="tok-variable">error</span><span class="tok-punct">.</span><span class="tok-property">message</span><span class="tok-keyword">}</span><span class="tok-string">`</span><span class="tok-punct">);</span>
+    <span class="tok-control">return</span><span class="tok-punct">;</span>
+  <span class="tok-punct">}</span>
+<span class="tok-punct">}</span>
+
+<span class="tok-function">welcome</span><span class="tok-punct">(</span><span class="tok-variable">name</span><span class="tok-punct">);</span></code></pre>
+</article>
+                    <!-- ===== home.jsx ===== -->
+                    <article class="editor-view home" data-file="home" hidden>
+                        <div class="home__inner">
+                        <p class="home__greeting">// Hello, I'm</p>
+                        <h1 class="home__name">Dimitris Kourkoutas</h1>
+                        <p class="home__role">Junior Full Stack Software Engineer</p>
+                        <div class="home__divider"></div>
+                        <p class="home__description">
+                            I build web applications end to end, from the database to the interface.
+                            Short sentence about what you enjoy building and the stack you use.
+                        </p>
+
+                        <div class="home__actions">
+                            <a href="#projects" class="button button--primary" data-open="projects">
+                            View Projects <i class="codicon codicon-arrow-right"></i>
+                            </a>
+                            <a href="#about" class="button button--secondary" data-open="about">About Me</a>
+                        </div>
+
+                        <div class="home__links">
+                            <a href="https://github.com/DimitrisKourk" class="home__link" target="_blank" rel="noopener noreferrer">
+                            <i class="codicon codicon-github"></i> GitHub
+                            </a>
+                            <span class="home__separator">/</span>
+                            <a href="#contact" class="home__link" data-open="contact">
+                            <i class="codicon codicon-mail"></i> Contact
+                            </a>
+                        </div>
+                        </div>
+                    </article>
+                    <!-- ===== about.html ===== -->
+                    <article class="editor-view about" data-file="about" hidden>
+                    <div class="about__container">
+
+                        <header class="about__header">
+                        <div>
+                            <p class="about__comment">&lt;!-- about me --&gt;</p>
+                            <h1 class="about__name">Dimitrios Kourkoutas</h1>
+                            <p class="about__role">Full Stack Software Engineer</p>
+                            <p class="about__location"><span class="about__dot"></span>Thessaloniki, Greece</p>
+                        </div>
+
+                        <div class="about__header-links">
+                            <a href="https://github.com/DimitrisKourk" class="icon-button" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+                            <i class="codicon codicon-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/dimitriskourkoutas" class="icon-button" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
+                            <i class="devicon-linkedin-plain"></i>
+                            </a>
+                            <a href="#contact" class="icon-button" data-open="contact" title="Contact" aria-label="Contact">
+                            <i class="codicon codicon-mail"></i>
+                            </a>
+                        </div>
+                        </header>
+
+                        <!-- 01 Bio -->
+                        <section class="about__section">
+                        <h2 class="about__heading"><span class="about__number">01</span>Bio</h2>
+                        <p>
+                            I'm a software engineer passionate about creating modern applications and
+                            automating business tasks with innovative software solutions.
+                        </p>
+                        <p>
+                            From database design to UI/UX and API development, I turn ideas into scalable,
+                            easy to maintain, production-ready software.
+                        </p>
+                        </section>
+
+                        <!-- 02 Skills -->
+                        <section class="about__section">
+                        <h2 class="about__heading"><span class="about__number">02</span>Skills</h2>
+                        <div class="skills">
+                            <div class="skills__group">
+                            <h3 class="skills__title">Languages</h3>
+                            <ul class="chips">
+                                <li class="chip">Java</li><li class="chip">JavaScript</li><li class="chip">C/C++</li><li class="chip">Python</li>
+                            </ul>
+                            </div>
+                            <div class="skills__group">
+                            <h3 class="skills__title">Frameworks &amp; Libraries</h3>
+                            <ul class="chips">
+                                <li class="chip">React</li><li class="chip">Node.js</li><li class="chip">Express</li><li class="chip">PyGUI</li>
+                            </ul>
+                            </div>
+                            <div class="skills__group">
+                            <h3 class="skills__title">Databases</h3>
+                            <ul class="chips">
+                                <li class="chip">MySQL</li><li class="chip">PostgreSQL</li><li class="chip">Redis/Valkey</li><li class="chip">MongoDB</li>
+                            </ul>
+                            </div>
+                            <div class="skills__group">
+                            <h3 class="skills__title">Tools &amp; Practices</h3>
+                            <ul class="chips">
+                                <li class="chip">Git</li><li class="chip">REST APIs</li><li class="chip">WebSockets</li><li class="chip">Webhooks</li>
+                                <li class="chip">Postman</li><li class="chip">Software Testing</li><li class="chip">RDBMS Design</li><li class="chip">AI-assisted coding</li>
+                            </ul>
+                            </div>
+                            <div class="skills__group">
+                            <h3 class="skills__title">Design</h3>
+                            <ul class="chips">
+                                <li class="chip">UI/UX</li><li class="chip">Photoshop</li><li class="chip">Illustrator</li><li class="chip">3D Modeling</li><li class="chip">CAD</li>
+                            </ul>
+                            </div>
+                            <div class="skills__group">
+                            <h3 class="skills__title">Soft Skills</h3>
+                            <ul class="chips">
+                                <li class="chip">Problem-Solving</li><li class="chip">Critical Thinking</li><li class="chip">Collaboration</li>
+                                <li class="chip">Adaptability</li><li class="chip">Time Management</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </section>
+
+                        <!-- 03 Experience (newest first) -->
+                        <section class="about__section">
+                        <h2 class="about__heading"><span class="about__number">03</span>Experience</h2>
+
+                        <div class="card">
+                            <span class="card__period">Aug 2025 – Present</span>
+                            <h3 class="card__title">Full-Stack Developer</h3>
+                            <p class="card__subtitle">Personal Project · SaaS platform for real-estate brokers</p>
+                            <ul class="card__list">
+                            <li>Reseller-to-reseller community platform that helps brokers expand their product pool and cut market-to-sale time.</li>
+                            <li>Modular mono-repo following the router → controller → service → repository pattern.</li>
+                            <li>Multi-step upload forms, Passport.js auth with Valkey-backed sessions, friend-based user connections and RBAC subscription tiers.</li>
+                            </ul>
+                            <ul class="chips chips--small">
+                            <li class="chip">MySQL</li><li class="chip">Express</li><li class="chip">React</li><li class="chip">Node.js</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <span class="card__period">May 2026</span>
+                            <h3 class="card__title">Freelance Front-End Developer</h3>
+                            <p class="card__subtitle">Chef for Crews · <a href="https://chefforcrews.nl" target="_blank" rel="noopener noreferrer">chefforcrews.nl</a></p>
+                            <ul class="card__list">
+                            <li>Designed and built a minimal, fast-loading portfolio site with a refined, high-end feel for a Netherlands-based chef.</li>
+                            <li>Designed the company logo from scratch for future marketing campaigns.</li>
+                            </ul>
+                            <ul class="chips chips--small">
+                            <li class="chip">HTML</li><li class="chip">CSS</li><li class="chip">JavaScript</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <span class="card__period">Sep 2024 – Mar 2025</span>
+                            <h3 class="card__title">Freelance Full-Stack Developer</h3>
+                            <p class="card__subtitle">Photo Michalopoulos · <a href="https://photomichalopoulos.gr" target="_blank" rel="noopener noreferrer">photomichalopoulos.gr</a></p>
+                            <ul class="card__list">
+                            <li>Job-scheduling and employee management web app with per-job task tracking, file uploads and financial reporting.</li>
+                            <li>Google Calendar integration for event automation.</li>
+                            <li>Designed and developed the agency's responsive portfolio website.</li>
+                            </ul>
+                            <ul class="chips chips--small">
+                            <li class="chip">HTML/CSS/JS</li><li class="chip">Node.js</li><li class="chip">Express</li><li class="chip">MySQL</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <span class="card__period">Jul 2023 – Nov 2023</span>
+                            <h3 class="card__title">Freelance Software Developer</h3>
+                            <p class="card__subtitle">Gefsi Lamia</p>
+                            <ul class="card__list">
+                            <li>Replaced handwritten sales records with a QR-scan workflow, improving productivity and eliminating manual input errors.</li>
+                            <li>Built a custom UI and dashboards for daily and aggregated financial reports.</li>
+                            </ul>
+                            <ul class="chips chips--small">
+                            <li class="chip">Python</li><li class="chip">PyGUI</li><li class="chip">MySQL</li>
+                            </ul>
+                        </div>
+                        </section>
+
+                        <!-- 04 Education -->
+                        <section class="about__section">
+                        <h2 class="about__heading"><span class="about__number">04</span>Education</h2>
+
+                        <div class="card">
+                            <span class="card__period">Graduated 2025</span>
+                            <h3 class="card__title">BSc, Informatics and Telecommunications</h3>
+                            <p class="card__subtitle">University of Thessaly · GPA 8.01/10</p>
+                            <p class="card__text">
+                            <strong>Thesis:</strong> “Employing Artificial Intelligence Tools in Game Development and Use of
+                            Unreal Engine as a Deep Reinforcement Learning Simulation Environment”
+                            </p>
+                            <ul class="card__list">
+                            <li>Game prototype in Unreal Engine 5 with all assets (3D models, textures, sound, music) generated by AI.</li>
+                            <li>Trained a custom agent with the PPO algorithm through a real-time pipeline: game state streamed over WebSockets to a Python neural network that sent actions back as controller input.</li>
+                            </ul>
+                        </div>
+                        </section>
+
+                        <!-- 05 After Work -->
+                        <section class="about__section">
+                        <h2 class="about__heading"><span class="about__number">05</span>After Work</h2>
+                        <p>A sentence or two about what you enjoy outside of coding.</p>
+                        <ul class="chips">
+                            <li class="chip">Interest one</li><li class="chip">Interest two</li><li class="chip">Interest three</li>
+                        </ul>
+                        </section>
+
+                        <footer class="about__footer">
+                        <a href="#projects" class="about__footer-link" data-open="projects">
+                            See my projects <i class="codicon codicon-arrow-right"></i>
+                        </a>
+                        </footer>
+
+                    </div>
+                    </article>
+
+                    <!-- ===== contact.json ===== -->
+<article class="editor-view contact" data-file="contact" hidden>
+  <div class="contact__container">
+    <h1 class="contact__title">Get in touch</h1>
+    <p class="contact__intro">
+      I'm open to new opportunities, freelance projects and collaborations.
+      The fastest way to reach me is by email.
+    </p>
+
+    <!-- Contact details written as a JSON object (VS Code syntax colors) -->
+    <div class="code-block">
+      <div class="code-block__header">{...} contact.json</div>
+<pre class="code-block__body"><code><span class="tok-punct">{</span>
+  <span class="tok-key">"email"</span><span class="tok-punct">: </span><a class="tok-string" href="mailto:dimitriskourkoutas@yahoo.gr">"dimitriskourkoutas@yahoo.gr"</a><span class="tok-punct">,</span>
+  <span class="tok-key">"github"</span><span class="tok-punct">: </span><a class="tok-string" href="https://github.com/DimitrisKourk" target="_blank" rel="noopener noreferrer">"@DimitrisKourk"</a><span class="tok-punct">,</span>
+  <span class="tok-key">"linkedin"</span><span class="tok-punct">: </span><a class="tok-string" href="https://www.linkedin.com/in/dimitriskourkoutas" target="_blank" rel="noopener noreferrer">"@dimitriskourkoutas"</a>
+<span class="tok-punct">}</span></code></pre>
+    </div>
+
+    <div class="contact__actions">
+      <a href="mailto:dimitriskourkoutas@yahoo.gr" class="button button--primary">
+        <i class="codicon codicon-mail"></i> Send an email
+      </a>
+      <button type="button" class="button button--secondary" data-copy="dimitriskourkoutas@yahoo.gr">
+        <i class="codicon codicon-copy"></i> Copy email
+      </button>
+    </div>
+  </div>
+</article>
+
+                    <!-- ===== doom.exe (easter egg, opened from the terminal) ===== -->
+                    <article class="editor-view doom" data-file="doom" hidden>
+                    <header class="doom__bar">
+                        <span class="doom__title"><i class="codicon codicon-game"></i> DOOM.EXE</span>
+                        <span class="doom__hint">Click the game, then: arrows move · Ctrl fire · Space use · Esc menu</span>
+                    </header>
+
+                    <div class="doom__screen">
+                        <p class="doom__message" data-doom-loading>Loading DOOM…</p>
+                        <p class="doom__message" data-doom-mobile hidden>
+                        DOOM needs a keyboard. Open this page on a computer to play.
+                        </p>
+                        <div class="doom__player"></div>   <!-- js-dos draws the game here -->
+                    </div>
+
+                    <footer class="doom__credit">
+                        DOOM shareware © 1993 id Software ·
+                        running in <a href="https://js-dos.com" target="_blank" rel="noopener noreferrer">js-dos</a> (DOSBox, GPL)
+                    </footer>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+      <!-- Panel / terminal -->
+      <section class="panel">
+            <label for="panel-toggle" class="panel__header" title="Minimize / Restore Panel">
+                <span class="panel__tabs">
+                    <span class="panel__tab panel__tab--md-hide">Problems</span>
+                    <span class="panel__tab panel__tab--md-hide">Output</span>
+                    <span class="panel__tab panel__tab--md-hide">Debug Console</span>
+                    <span class="panel__tab panel__tab--active">Terminal</span>
+                </span>
+
+                <span class="panel__actions">
+                    <button type="button" class="panel__action" data-action="new-terminal" title="New Terminal" aria-label="New Terminal"><i class="codicon codicon-add"></i></button>
+                    <button type="button" class="panel__action" data-action="clear" title="Clear Terminal" aria-label="Clear Terminal"><i class="codicon codicon-trash"></i></button>
+                    <span class="panel__action panel__minimize">
+                    <i class="codicon codicon-chrome-minimize panel__minimize-icon"></i>
+                    <i class="codicon codicon-chevron-up panel__restore-icon"></i>
+                    </span>
+                    <button type="button" class="panel__action" data-action="hide" title="Hide Panel" aria-label="Hide Panel"><i class="codicon codicon-close"></i></button>
+                </span>
+            </label>
+
+            <div class="terminal">
+                <div class="terminal__output">
+                <p>Welcome to my portfolio!</p>
+                <p>Type <span class="terminal__highlight">help</span> to see available commands.</p>
+                </div>
+
+                <form class="terminal__line" autocomplete="off">
+                <label for="terminal-input" class="terminal__prompt">
+                    <span class="terminal__prompt-host"><span class="terminal__user">dimitris@portfolio</span>:</span><span class="terminal__path">~</span>$
+                </label>
+                <input type="text" id="terminal-input" class="terminal__input" spellcheck="false" autocapitalize="off" autocomplete="off">
+                </form>
+            </div>
+        </section>
+        <!-- Pop-up notifications (filled by scripts/notifications.js) -->
+        <div class="notifications" aria-live="polite"></div>
+    </main>
+
+    <!-- Status bar -->
+    <footer class="status-bar">
+        <div class="status-bar__group">
+            <button type="button" class="status-bar__item status-bar__remote status-bar__item--sm-hide" title="Open a Remote Window" aria-label="Open a Remote Window">
+            <i class="codicon codicon-remote"></i>
+            </button>
+            <button type="button" class="status-bar__item" title="Git branch">
+            <i class="codicon codicon-git-branch"></i>
+            <span>main</span>
+            </button>
+            <button type="button" class="status-bar__item status-bar__item--sm-hide" title="No Problems">
+            <i class="codicon codicon-error"></i>
+            <span>0</span>
+            <i class="codicon codicon-warning"></i>
+            <span>0</span>
+            </button>
+        </div>
+
+        <div class="status-bar__group">
+            <button type="button" class="status-bar__item status-bar__item--md-hide" data-editor-item title="Go to Line/Column">
+
+            <span>Ln 1, Col 1</span>
+            </button>
+            <button type="button" class="status-bar__item status-bar__item--md-hide" data-editor-item title="Select Encoding">
+            <span>UTF-8</span>
+            </button>
+            <button type="button" class="status-bar__item" data-editor-item data-status="language" title="Select Language Mode">
+            <span>JavaScript JSX</span>
+            </button>
+            <button type="button" class="status-bar__item status-bar__item--sm-hide" data-status="notifications" title="Notifications" aria-label="Notifications">
+            <i class="codicon codicon-bell"></i>
+            </button>
+        </div>
+    </footer>
+  </div>
+</body>
+</html>

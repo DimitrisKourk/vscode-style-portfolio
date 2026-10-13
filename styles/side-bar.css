@@ -1,0 +1,241 @@
+.side-bar {
+  color: #cccccc;
+  font-size: 0.8125em;
+  overflow-y: auto;
+  user-select: none;
+}
+
+/* ----- File list (add more <li> items as needed) ----- */
+.explorer__files {
+  list-style: none;
+  padding: 0.5em 0;
+}
+
+.explorer__file {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.25em 1.25em;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+/* Refresh icon spins once when clicked (class added by side-bar.js) */
+@keyframes explorer-spin {
+  to { transform: rotate(360deg); }
+}
+
+.explorer__action .is-spinning {
+  animation: explorer-spin 0.6s ease;
+}
+.explorer__file:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+/* Active (open) file; two classes so it also wins over :hover */
+.explorer__file.explorer__file--active {
+  background: #37373d;
+  color: #ffffff;
+}
+/* Icon placeholder: fixed square so names stay aligned */
+.explorer__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.6em;
+  height: 1.6em;
+}
+/* Logo icons scale up inside the larger placeholder */
+.explorer__icon i {
+  font-size: 1.25em;
+}
+
+/* ----- Project directory (drop-down) ----- */
+.explorer__folder {
+  position: relative;
+}
+
+/* Checkbox holds the open/closed state; hidden but still keyboard-focusable */
+.explorer__toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.explorer__folder-name {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  height: 1.8em;
+  padding: 0 6.5em 0 0.5em;   /* right padding keeps the name clear of the action icons */
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.explorer__folder-name:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.explorer__toggle:focus-visible + .explorer__folder-name {
+  outline: thin solid #007fd4;
+  outline-offset: -0.1em;
+}
+/* ----- Folder action icons (new file, new folder, refresh, collapse) ----- */
+.explorer__actions {
+  position: absolute;
+  top: 0;
+  right: 0.25em;
+  display: flex;
+  align-items: center;
+  height: 1.8em;               /* same height as the folder row */
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+/* Show the icons when the side bar is hovered or one of them has keyboard focus */
+.side-bar:hover .explorer__actions,
+.explorer__actions:focus-within {
+  opacity: 1;
+}
+
+/* Touch screens have no hover, so always show them */
+@media (hover: none) {
+  .explorer__actions {
+    opacity: 1;
+  }
+}
+
+.explorer__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2em 0.3em;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+
+/* Codicons ship with a fixed 16px size; override it with em so it scales */
+.explorer__action .codicon {
+  font-size: 1.2em;
+}
+
+.explorer__action:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.explorer__action:focus-visible {
+  outline: thin solid #007fd4;
+}
+
+/* Chevron rotates when open */
+.explorer__chevron {
+  transition: transform 0.2s ease;
+}
+/* Override Codicons' fixed 16px (needs two classes to beat Codicons' own selector) */
+.explorer__folder-name .codicon {
+  font-size: 1em;
+}
+
+.explorer__toggle:checked + .explorer__folder-name .explorer__chevron {
+  transform: rotate(90deg);
+}
+
+/* Smooth height animation: grid row goes from 0fr (closed) to 1fr (open) */
+.explorer__folder-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.2s ease;
+}
+
+.explorer__toggle:checked ~ .explorer__folder-content {
+  grid-template-rows: 1fr;
+}
+
+.explorer__folder-content > .explorer__files {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Indent files inside the folder */
+.explorer__folder .explorer__file {
+  padding-left: 2em;
+}
+
+/* Respect users who turn off animations in their OS */
+@media (prefers-reduced-motion: reduce) {
+  .explorer__folder-content,
+  .explorer__chevron {
+    transition: none;
+  }
+  .explorer__action .is-spinning {
+    animation: none;
+  }
+}
+
+/* ===== Show / hide the side bar (data-sidebar set on .app by activity-bar.js) ===== */
+
+.app {
+  position: relative;                        /* anchor for the phone drawer */
+  transition: grid-template-columns 0.2s ease;
+}
+
+.side-bar {
+  transition: visibility 0.2s;
+}
+
+/* Large and medium screens: the side bar column shrinks to nothing */
+.app[data-sidebar="hidden"] {
+  grid-template-columns: 4% 0 1fr;
+}
+
+.app[data-sidebar="hidden"] .side-bar {
+  visibility: hidden;                        /* can't be tabbed into while hidden */
+  overflow: hidden;
+}
+
+@media (max-width: 64em) {
+  .app[data-sidebar="hidden"] {
+    grid-template-columns: 6% 0 1fr;
+  }
+}
+
+/* Phones: the side bar opens as a drawer over the editor */
+@media (max-width: 40em) {
+  /* Keep the phone's 2-column grid in both states (overrides the rules above) */
+  .app[data-sidebar] {
+    grid-template-columns: 12% 1fr;
+  }
+
+  .app[data-sidebar="shown"] .side-bar {
+    display: block;
+    position: absolute;
+    grid-area: auto;                         /* position against .app, not a grid cell */
+    top: 7%;                                 /* below the title bar */
+    bottom: 5%;                              /* above the status bar */
+    left: 12%;                               /* next to the activity bar */
+    z-index: 20;
+    width: 70%;
+    box-shadow: 0.3em 0 1em rgba(0, 0, 0, 0.5);
+    animation: side-bar-in 0.2s ease;
+  }
+}
+
+@keyframes side-bar-in {
+  from { transform: translateX(-100%); }
+  to   { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app,
+  .side-bar,
+  .app[data-sidebar="shown"] .side-bar {
+    transition: none;
+    animation: none;
+  }
+}

@@ -1,0 +1,301 @@
+/* .editor is the scroll container (styles.css). Inside it, line numbers and page
+   sit side by side and scroll together as one piece. */
+.editor__inner {
+  display: grid;
+  grid-template-columns: 4em 1fr;
+  min-height: 100%;                     /* at least as tall as the visible editor, taller for long pages */
+}
+
+/* ----- Line numbers ----- */
+.editor__gutter {
+  position: relative;                   /* the list inside is absolute, so it never  */
+  overflow: hidden;                     /* makes the editor taller than the content  */
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.875em;
+  user-select: none;
+}
+
+.editor__gutter ol {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5em 1.5em 0 0;
+  list-style: none;
+  text-align: right;
+}
+
+.editor__gutter li {
+  line-height: 1.5em;
+  color: #6e7681;
+}
+
+.editor__gutter li:first-child {
+  color: #c6c6c6;                       /* "cursor" line, like VS Code */
+}
+
+/* ----- Page area ----- */
+.editor__content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-family: "Ubuntu", sans-serif;    /* pages use the UI font; code accents use mono */
+  color: var(--text-muted);
+}
+
+.editor-view {
+  flex: 1 0 auto;                       /* fill the editor, but grow with long pages */
+}
+
+/* Views set their own display, so make sure [hidden] still wins */
+.editor-view[hidden] {
+  display: none;
+}
+
+/* ----- Code view (empty editor) -----
+   Same font size, line height and top padding as the line numbers,
+   so every line of code sits exactly next to its number */
+.code-view__code {
+  margin: 0;
+  padding: 0.5em 1.5em 2em 0.5em;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.875em;
+  line-height: 1.5em;
+  color: #d4d4d4;
+  white-space: pre;
+  overflow-x: auto;                     /* long lines scroll sideways on small screens */
+}
+
+/* Browsers give <code> its own monospace font size; keep it identical to the <pre> */
+.code-view__code code {
+  font: inherit;
+}
+
+/* ----- Syntax colors (VS Code Dark+), shared by every code-style block ----- */
+.tok-keyword  { color: #569cd6; }       /* const, function, async, => */
+.tok-control  { color: #c586c0; }       /* await, return, try, catch */
+.tok-function { color: #dcdcaa; }       /* function names */
+.tok-variable { color: #9cdcfe; }       /* variables, parameters, object keys */
+.tok-property { color: #9cdcfe; }       /* .name, .title ... */
+.tok-key      { color: #9cdcfe; }       /* JSON keys */
+.tok-type     { color: #4ec9b0; }       /* console */
+.tok-string   { color: #ce9178; }
+.tok-number   { color: #b5cea8; }
+.tok-comment  { color: #6a9955; }
+.tok-punct    { color: #d4d4d4; }
+
+/* ----- Buttons shared by all views ----- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.85em 1.75em;
+  font-family: inherit;                 /* <button> elements don't inherit the font by default */
+  font-size: 0.875em;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  border-radius: 0.4em;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-0.15em);
+}
+
+.button:focus-visible {
+  outline: thin solid var(--accent);
+  outline-offset: 0.2em;
+}
+
+.button--primary {
+  background: var(--accent-strong);
+  color: #ffffff;
+  box-shadow: 0 0.25em 1.25em rgba(0, 120, 212, 0.3);
+}
+
+.button--primary:hover {
+  background: #1a85d9;
+}
+
+.button--secondary {
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.85);
+  border: thin solid rgba(255, 255, 255, 0.12);
+}
+
+.button--secondary:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Codicons ship with a fixed 16px size; override with em */
+.button .codicon {
+  font-size: 1.15em;
+}
+
+/* ----- Square icon buttons (GitHub, LinkedIn, mail...) ----- */
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5em;
+  height: 2.5em;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border: thin solid var(--border-subtle);
+  border-radius: 0.5em;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.icon-button:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-0.15em);
+}
+
+.icon-button:focus-visible {
+  outline: thin solid var(--accent);
+  outline-offset: 0.15em;
+}
+
+/* Codicons ship with a fixed 16px size; override with em */
+.icon-button .codicon,
+.icon-button i {
+  font-size: 1.25em;
+}
+
+/* ----- Chips (skills, tech stacks, interests) ----- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+}
+
+.chip {
+  padding: 0.35em 0.75em;
+  font-size: 0.8125em;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+  border: thin solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.4em;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.chip:hover {
+  color: var(--accent);
+  background: rgba(55, 148, 255, 0.1);
+  border-color: rgba(55, 148, 255, 0.3);
+}
+
+/* Smaller, monospace chips for tech stacks inside cards */
+.chips--small .chip {
+  padding: 0.2em 0.6em;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.75em;
+}
+
+/* ----- Cards (experience, education, projects) ----- */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6em;
+  padding: 1.5em;
+  background: rgba(255, 255, 255, 0.02);
+  border: thin solid var(--border-subtle);
+  border-radius: 0.6em;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.card + .card {
+  margin-top: 1em;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.card__period {
+  padding: 0.25em 0.65em;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.75em;
+  color: var(--accent);
+  background: rgba(55, 148, 255, 0.1);
+  border-radius: 0.3em;
+}
+
+.card__title {
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.card__subtitle {
+  margin-top: -0.3em;
+  font-size: 0.875em;
+  color: var(--text-faint);
+}
+
+.card__text {
+  font-size: 0.875em;
+  line-height: 1.7;
+}
+
+.card__text strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.card__list {
+  padding-left: 1.25em;
+  font-size: 0.875em;
+  line-height: 1.6;
+}
+
+.card__list li + li {
+  margin-top: 0.4em;
+}
+
+.card__list li::marker {
+  color: var(--accent);
+}
+
+.card a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* ----- Small screens ----- */
+@media (max-width: 40em) {
+  .editor__inner {
+    grid-template-columns: 2.75em 1fr;
+  }
+
+  .editor__gutter ol {
+    padding-right: 0.75em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .icon-button,
+  .chip,
+  .card {
+    transition: none;
+  }
+
+  .button:hover,
+  .icon-button:hover {
+    transform: none;
+  }
+}

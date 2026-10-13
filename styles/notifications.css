@@ -1,0 +1,84 @@
+/* ===== notifications ===== */
+
+/* Stack in the bottom-right corner of the workbench (above the status bar) */
+.notifications {
+  position: absolute;
+  right: 0.75em;
+  bottom: 0.75em;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 22em;
+  max-width: calc(100% - 1.5em);
+  pointer-events: none;          /* empty container never blocks clicks */
+}
+
+.notification {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
+  padding: 0.8em 0.6em 0.8em 0.9em;
+  background: #252526;
+  color: #cccccc;
+  font-size: 0.8125em;
+  border: thin solid #454545;
+  border-radius: 0.4em;
+  box-shadow: 0 0.2em 0.8em rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+  animation: notification-in 0.2s ease;
+}
+
+.notification--leaving {
+  animation: notification-out 0.2s ease forwards;
+}
+
+@keyframes notification-in {
+  from { opacity: 0; transform: translateY(0.75em); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes notification-out {
+  to { opacity: 0; transform: translateY(0.75em); }
+}
+
+/* Codicons ship with a fixed 16px size; override with em (two classes to win) */
+.notification .codicon {
+  font-size: 1.25em;
+}
+
+.notification .notification__icon {
+  color: #3794ff;
+  flex-shrink: 0;
+}
+
+.notification__message {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.notification__close {
+  display: inline-flex;
+  flex-shrink: 0;
+  padding: 0.1em;
+  color: inherit;
+  background: none;
+  border: none;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+
+.notification__close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.notification__close:focus-visible {
+  outline: thin solid #007fd4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notification,
+  .notification--leaving {
+    animation: none;
+  }
+}

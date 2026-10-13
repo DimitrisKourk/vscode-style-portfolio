@@ -1,0 +1,108 @@
+/* ===== Reset ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1em;
+}
+
+/* ===== Shared colors ===== */
+:root {
+  --accent: #3794ff;          /* VS Code blue: links, highlights */
+  --accent-strong: #0078d4;   /* VS Code blue: button backgrounds (white text stays readable) */
+  --text: #e7e7e7;            /* headings */
+  --text-muted: rgba(255, 255, 255, 0.6);   /* body text */
+  --text-faint: rgba(255, 255, 255, 0.4);   /* labels, small print */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+}
+
+/* ===== App grid ===== */
+.app {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 4% 18% 1fr;
+  grid-template-rows: 4% 1fr 3%;
+  grid-template-areas:
+    "title    title    title"
+    "activity sidebar  workbench"
+    "status   status   status";
+}
+
+.title-bar    { grid-area: title; }
+.activity-bar { grid-area: activity; }
+.side-bar     { grid-area: sidebar; }
+.workbench    { grid-area: workbench; }
+.status-bar   { grid-area: status; }
+
+/* ===== Workbench grid (tabs / editor / panel) ===== */
+.workbench {
+  display: grid;
+  grid-template-rows: 5% 1fr 25%;
+  min-width: 0;   /* lets the editor shrink instead of overflowing */
+  min-height: 0;
+  position: relative;   /* anchor for the notifications pop-ups */
+}
+
+.editor {
+  overflow: auto;
+}
+
+/* Code-style areas use the monospace font */
+.editor,
+.panel {
+  font-family: "Ubuntu Mono", monospace;
+}
+
+/* ===== Medium screens (tablets, small laptops) ===== */
+@media (max-width: 64em) {
+  .app {
+    grid-template-columns: 6% 24% 1fr;
+    grid-template-rows: 5% 1fr 4%;
+  }
+
+  .workbench {
+    grid-template-rows: 6% 1fr 25%;
+  }
+}
+
+/* ===== Small screens (phones) ===== */
+@media (max-width: 40em) {
+  .app {
+    grid-template-columns: 12% 1fr;
+    grid-template-rows: 7% 1fr 5%;
+    grid-template-areas:
+      "title    title"
+      "activity workbench"
+      "status   status";
+  }
+
+  /* Side bar hidden by default; can be toggled later with JS */
+  .side-bar {
+    display: none;
+  }
+
+  .workbench {
+    grid-template-rows: 7% 1fr 20%;
+  }
+}
+
+/* ===== Temporary colors to visualize the layout (Dark+ inspired) ===== */
+.title-bar    { background: #3c3c3c; }
+.activity-bar { background: #333333; }
+.side-bar     { background: #252526; }
+.editor-tabs  { background: #2d2d2d; }
+.editor       { background: #1e1e1e; }
+.panel        { background: #1e1e1e; border-top: thin solid #3c3c3c; }
+.status-bar   { background: #181818; }

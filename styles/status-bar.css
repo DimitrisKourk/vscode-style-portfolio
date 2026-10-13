@@ -1,0 +1,73 @@
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background: #181818;
+  border-top: thin solid #2b2b2b;
+  color: #cccccc;
+  font-size: 0.75em;
+  overflow: hidden;
+  user-select: none;
+}
+
+.status-bar__group {
+  display: flex;
+  align-items: stretch;
+}
+
+/* ----- Single item ----- */
+.status-bar__item {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0 0.6em;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.status-bar__item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.status-bar__item:focus-visible {
+  outline: thin solid #007fd4;
+  outline-offset: -0.1em;
+}
+/* Items hidden by status-bar.js (display: flex above would otherwise win over [hidden]) */
+.status-bar__item[hidden] {
+  display: none;
+}
+
+/* Codicons ship with a fixed 16px size; override with em */
+.status-bar__item .codicon {
+  font-size: 1.15em;
+}
+
+/* ----- Remote indicator (colored block on the far left) ----- */
+.status-bar__remote {
+  padding: 0 0.9em;
+  background: #0078d4;
+  color: #ffffff;
+}
+
+.status-bar__remote:hover {
+  background: #1a85d9;
+}
+
+/* ----- Medium screens: hide less important items ----- */
+@media (max-width: 64em) {
+  .status-bar__item--md-hide {
+    display: none;
+  }
+}
+
+/* ----- Small screens: keep only branch + language ----- */
+@media (max-width: 40em) {
+  .status-bar__item--sm-hide {
+    display: none;
+  }
+}

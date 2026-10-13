@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOOM</title>
+  <!-- js-dos lives only inside this iframe, so its global CSS can't affect the portfolio -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/js-dos@8.5.3/dist/js-dos.css">
+  <script src="https://cdn.jsdelivr.net/npm/js-dos@8.5.3/dist/js-dos.js"
+          onerror="parent.postMessage({ source: 'doom', type: 'error' }, '*')"></script>
+  <style>
+    html, body { height: 100%; margin: 0; overflow: hidden; background: #000; }
+    #dos { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <div id="dos"></div>
+
+  <script>
+    (function () {
+      "use strict";
+      if (typeof Dos !== "function") return;   // js-dos failed to load (error already reported)
+
+      // Messages only ever go to / come from the portfolio page that embeds us
+      function tellParent(type) {
+        parent.postMessage({ source: "doom", type: type }, "*");
+      }
+
+      const dos = Dos(document.getElementById("dos"), {
+        url: new URL("doom.jsdos", window.location.href).href,
+        pathPrefix: "https://cdn.jsdelivr.net/npm/js-dos@8.5.3/dist/emulators/",
+        autoStart: true,
+        kiosk: true,                  // hide js-dos's own UI
+        theme: "dark",
+        renderAspect: "4/3",
+        imageRendering: "pixelated",
+        onEvent: function (event) {
+          if (event === "ci-ready") tellParent("ready");
+        }
+      });
+
+      // The portfolio pauses the game while another tab is shown
+      window.addEventListener("message", function (event) {
+        if (event.source !== parent) return;
+        if (event.data && event.data.type === "pause") dos.setPaused(Boolean(event.data.paused));
+      });
+    })();
+  </script>
+</body>
+</html>

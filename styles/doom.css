@@ -1,0 +1,114 @@
+/* ===== doom.exe view ===== */
+
+.doom {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25em 1.5em;
+  gap: 0.75em;
+}
+
+/* ----- Top bar: title + controls hint ----- */
+.doom__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5em 1.5em;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.85em;
+}
+
+.doom__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-weight: 700;
+  color: #e44d26;                     /* DOOM red */
+}
+
+.doom__hint {
+  color: var(--text-faint);
+}
+
+/* ----- Game screen ----- */
+.doom__screen {
+  position: relative;
+  flex: 1;
+  min-height: 22em;
+  background: #000000;
+  border: thin solid var(--border-subtle);
+  border-radius: 0.4em;
+  overflow: hidden;
+}
+
+/* js-dos fills this box; it keeps the 4:3 picture and adds black bars itself */
+.doom__player {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* The game's iframe fills the screen box */
+.doom__frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Loading / phone message, centered in the screen */
+.doom__message {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  padding: 0 1.5em;
+  transform: translateY(-50%);
+  text-align: center;
+  font-family: "Ubuntu Mono", monospace;
+  color: #e44d26;
+  z-index: 1;                         /* above the game's iframe while it loads */
+  pointer-events: none;
+}
+
+.doom__message[hidden] {
+  display: none;
+}
+
+.doom__credit {
+  font-size: 0.75em;
+  color: var(--text-faint);
+}
+
+.doom__credit a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.doom__credit a:hover {
+  text-decoration: underline;
+}
+
+/* ----- File icon (tab + status) ----- */
+.file-icon--doom {
+  color: #e44d26;
+}
+
+/* Codicons ship with a fixed 16px size; override with em (two classes to win) */
+.editor-tab__icon .codicon,
+.doom__title .codicon {
+  font-size: 1.1em;
+}
+
+/* ----- Small screens ----- */
+@media (max-width: 40em) {
+  .doom {
+    padding: 1em;
+  }
+
+  .doom__hint {
+    display: none;                    /* no keyboard on phones anyway */
+  }
+}

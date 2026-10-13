@@ -1,0 +1,95 @@
+/* ===== contact.json view ===== */
+
+/* Short page, so it is centered in the editor like home.jsx */
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3em 2.5em;
+}
+
+.contact__container {
+  width: 100%;
+  max-width: 36em;
+}
+
+.contact__title {
+  font-size: 2.25em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.contact__intro {
+  margin: 0.75em 0 2em;
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+/* ----- JSON code block ----- */
+.code-block {
+  overflow: hidden;
+  background: #181818;
+  border: thin solid var(--border-subtle);
+  border-radius: 0.6em;
+}
+
+/* Little title strip, like an editor tab */
+.code-block__header {
+  padding: 0.6em 1em;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.8em;
+  color: var(--text-faint);
+  border-bottom: thin solid var(--border-subtle);
+}
+
+.code-block__body {
+  margin: 0;
+  padding: 1.25em 1.5em;
+  overflow-x: auto;                      /* long values scroll instead of breaking the layout */
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 1em;
+  line-height: 1.9;
+  color: #d4d4d4;
+}
+
+
+.code-block__body a {
+  text-decoration: none;
+}
+
+.code-block__body a:hover {
+  text-decoration: underline;
+}
+
+.code-block__body a:focus-visible {
+  outline: thin solid var(--accent);
+}
+
+/* ----- Buttons under the block ----- */
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+  margin-top: 1.5em;
+}
+
+/* ----- Small screens ----- */
+@media (max-width: 40em) {
+  .contact {
+    padding: 2.5em 1.25em;
+  }
+
+  .contact__title {
+    font-size: 1.75em;
+  }
+
+  .code-block__body {
+    padding: 1em;
+    font-size: 0.85em;
+  }
+
+  .contact__actions {
+    flex-direction: column;
+  }
+}

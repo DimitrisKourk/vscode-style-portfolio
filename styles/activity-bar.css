@@ -1,0 +1,46 @@
+.activity-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #333333;
+  overflow: hidden;
+}
+
+.activity-bar__group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reset default button look */
+.activity-bar__item {
+  width: 100%;
+  padding: 0.6em 0;
+  font-size: 1.5em;
+  color: #858585;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Codicons ship with a fixed 16px size; let them use the button's em size instead */
+.activity-bar__item .codicon {
+  font-size: 1em;
+}
+
+.activity-bar__item:hover {
+  color: #ffffff;
+}
+
+/* Active item: white icon + accent line on the left edge */
+.activity-bar__item--active {
+  color: #ffffff;
+  box-shadow: inset 0.1em 0 0 #ffffff;
+}
+
+/* ----- Small screens ----- */
+@media (max-width: 40em) {
+  .activity-bar__item {
+    padding: 0.5em 0;
+    font-size: 1.3em;
+  }
+}

@@ -1,0 +1,108 @@
+.title-bar {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  align-items: center;
+  background: #3c3c3c;
+  color: #cccccc;
+  font-size: 0.8125em;
+  user-select: none;
+}
+
+/* Reset default button look inside the title bar */
+.title-bar button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/* Codicons ship with a fixed 16px size; scale them with the title bar text instead */
+.title-bar .codicon {
+  font-size: 1.15em;
+}
+
+/* ----- Left: icon + menu ----- */
+.title-bar__left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.title-bar__icon {
+  padding: 0 0.75em;
+  color: #3794ff;
+  font-weight: 700;
+}
+
+.title-bar__menu {
+  display: flex;
+}
+
+.title-bar__menu button {
+  padding: 0.25em 0.6em;
+  border-radius: 0.3em;
+}
+
+.title-bar__menu button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ----- Center: search / title box ----- */
+.title-bar__center {
+  display: flex;
+  justify-content: center;
+}
+
+.title-bar__search {
+  width: 100%;
+  padding: 0.2em 0.75em;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: thin solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.4em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ----- Right: window controls ----- */
+.title-bar__controls {
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.title-bar__control {
+  height: 100%;
+  padding: 0 1.1em;
+}
+
+.title-bar__control:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.title-bar__control--close:hover {
+  background: #e81123;
+  color: #ffffff;
+}
+
+/* ----- Medium screens ----- */
+@media (max-width: 64em) {
+  .title-bar__menu {
+    display: none;
+  }
+}
+
+/* ----- Small screens ----- */
+@media (max-width: 40em) {
+  .title-bar {
+    grid-template-columns: 20% 45% 35%;
+    font-size: 0.75em;
+  }
+
+  .title-bar__control {
+    padding: 0 0.8em;
+  }
+}

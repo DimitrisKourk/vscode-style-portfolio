@@ -1,0 +1,194 @@
+/* ===== about.html view ===== */
+
+.about__container {
+  max-width: 45em;
+  margin: 0 auto;
+  padding: 3em 2.5em 4em;
+}
+
+/* ----- Header: name, role, location + links ----- */
+.about__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5em;
+  margin-bottom: 3em;
+  padding-bottom: 2em;
+  border-bottom: thin solid var(--border-subtle);
+}
+
+/* HTML-style comment above the name (like the // comment on home.jsx) */
+.about__comment {
+  margin-bottom: 0.5em;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.9em;
+  color: #6a9955;
+}
+
+.about__name {
+  font-size: 2.25em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.about__role {
+  margin-top: 0.25em;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.about__location {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 0.5em;
+  font-size: 0.85em;
+  color: var(--text-faint);
+}
+
+/* Pulsing green "available" dot */
+.about__dot {
+  width: 0.5em;
+  height: 0.5em;
+  background: #4ec9b0;
+  border-radius: 50%;
+  animation: about-pulse 2s ease-in-out infinite;
+}
+
+@keyframes about-pulse {
+  50% { opacity: 0.4; }
+}
+
+.about__header-links {
+  display: flex;
+  gap: 0.5em;
+  flex-shrink: 0;
+}
+
+/* ----- Sections ----- */
+.about__section + .about__section {
+  margin-top: 3em;
+}
+
+/* "01  Bio  ─────────" */
+.about__heading {
+  display: flex;
+  align-items: baseline;
+  gap: 1em;
+  margin-bottom: 1.25em;
+  font-size: 1.35em;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.about__heading::after {
+  content: "";
+  flex: 1;
+  border-top: thin solid var(--border-subtle);
+  transform: translateY(-0.3em);
+}
+
+.about__number {
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.6em;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.about__section > p {
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+.about__section > p + p {
+  margin-top: 1em;
+}
+
+.about__section > p + .chips {
+  margin-top: 1.25em;
+}
+
+/* ----- Skills: grid of grouped chips ----- */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+}
+
+.skills__group {
+  padding: 1.25em;
+  background: rgba(255, 255, 255, 0.02);
+  border: thin solid var(--border-subtle);
+  border-radius: 0.6em;
+}
+
+.skills__title {
+  margin-bottom: 0.9em;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ----- Footer link ----- */
+.about__footer {
+  margin-top: 3em;
+  padding-top: 2em;
+  border-top: thin solid var(--border-subtle);
+  text-align: center;
+}
+
+.about__footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.about__footer-link:hover {
+  gap: 0.8em;
+}
+
+.about__footer-link:focus-visible {
+  outline: thin solid var(--accent);
+  outline-offset: 0.2em;
+}
+
+/* Codicons ship with a fixed 16px size; override with em */
+.about__footer-link .codicon {
+  font-size: 1.1em;
+}
+
+/* ----- Small screens ----- */
+@media (max-width: 40em) {
+  .about__container {
+    padding: 2em 1.25em 3em;
+  }
+
+  .about__header {
+    flex-direction: column;
+  }
+
+  .about__name {
+    font-size: 1.75em;
+  }
+
+  .skills {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__dot {
+    animation: none;
+  }
+
+  .about__footer-link {
+    transition: none;
+  }
+}
