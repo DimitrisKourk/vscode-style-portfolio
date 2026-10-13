@@ -1,0 +1,114 @@
+/* ===== CV.pdf view ===== */
+
+.cv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  padding: 1.25em 1.5em;
+}
+
+/* ----- Top bar: file name + buttons ----- */
+.cv__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75em 1.5em;
+}
+
+.cv__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.9em;
+  color: var(--text);
+}
+
+.cv__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+}
+
+.cv__actions .button {
+  padding: 0.6em 1.1em;
+  font-size: 0.8em;
+}
+
+/* ----- PDF viewer ----- */
+.cv__viewer {
+  position: relative;
+  flex: 1;
+  min-height: 30em;
+  background: #2a2a2a;
+  border: thin solid var(--border-subtle);
+  border-radius: 0.4em;
+  overflow: hidden;
+}
+
+.cv__frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Message for devices that can't show a PDF inside a page (hidden by default) */
+.cv__fallback {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  padding: 0 1.5em;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 0.9em;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* Codicons ship with a fixed 16px size; override with em */
+.cv__fallback .codicon {
+  display: block;
+  margin-bottom: 0.4em;
+  font-size: 3em;
+}
+
+/* PDF icon color, used in the explorer, tabs and this view */
+.file-icon--pdf {
+  color: #f14c4c;
+}
+
+/* ----- Touch-only devices: most mobile browsers don't render PDFs in an iframe ----- */
+@media (hover: none) and (pointer: coarse) {
+  .cv__frame {
+    display: none;
+  }
+
+  .cv__fallback {
+    display: block;
+  }
+
+  .cv__viewer {
+    min-height: 16em;
+  }
+}
+
+/* ----- Small screens ----- */
+@media (max-width: 40em) {
+  .cv {
+    padding: 1em;
+  }
+
+  .cv__actions {
+    width: 100%;
+  }
+
+  .cv__actions .button {
+    flex: 1;
+  }
+}

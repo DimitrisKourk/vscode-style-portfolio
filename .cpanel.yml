@@ -1,0 +1,20 @@
+---
+# cPanel Git Version Control deployment.
+# Copies only the files the website needs into public_html.
+# Replace CPANEL_USERNAME with your cPanel account username.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/di655301/public_html/
+    - /bin/mkdir -p $DEPLOYPATH
+
+    # Page, icons and SEO files
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp favicon.svg favicon.ico apple-touch-icon.png og-image.png $DEPLOYPATH
+    - /bin/cp robots.txt sitemap.xml $DEPLOYPATH
+    - /bin/cp CV.pdf $DEPLOYPATH
+
+    # Folders
+    - /bin/cp -R styles $DEPLOYPATH
+    - /bin/cp -R scripts $DEPLOYPATH
+    - /bin/cp -R data $DEPLOYPATH
+    - /bin/cp -R games $DEPLOYPATH

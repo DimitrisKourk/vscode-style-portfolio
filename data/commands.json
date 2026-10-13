@@ -1,8 +1,11 @@
 {
-  "whoami": "Dimitris Kourkoutas — junior full stack developer.",
+  "whoami": "Dimitris Kourkoutas — junior full stack software engineer.",
   "about": [
-    "Hi! I'm Dimitris Kourkoutas, a junior full stack developer.",
-    "I enjoy building things end to end, from the database to the UI."
+    "Hi! I'm Dimitris Kourkoutas, a full stack software engineer from Thessaloniki, Greece.",
+    "I build modern web applications and automate business tasks, from database design to UI/UX and APIs.",
+    "Currently building broker2broker, a platform where real-estate brokers share listings.",
+    "Away from the keyboard: 3D printing, laser engraving and motorcycle trips.",
+    "Type 'projects' or 'skills' to see more."
   ],
     "skills": [
     "Languages:   JavaScript, Java, Python, C, C++, SQL",

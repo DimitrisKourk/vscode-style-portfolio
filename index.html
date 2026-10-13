@@ -3,8 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dimitris Kourkoutas</title>
-  <link rel="icon" href="./favicon.ico" sizes="32x32">
+  <title>Dimitris Kourkoutas — Full Stack Software Engineer</title>
+  <meta name="description" content="Full stack software engineer in Thessaloniki, Greece. I create modern applications and automate business tasks, from database design to UI/UX and APIs.">
+  <link rel="canonical" href="https://dimitriskourkoutas.gr/">
+  <meta name="theme-color" content="#181818">  <link rel="icon" href="./favicon.ico" sizes="32x32">
+  <!-- Link previews (LinkedIn, Facebook, Viber, Slack, X...) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dimitris Kourkoutas">
+  <meta property="og:title" content="Dimitris Kourkoutas — Full Stack Software Engineer">
+  <meta property="og:description" content="Full stack software engineer in Thessaloniki, Greece. I create modern applications and automate business tasks, from database design to UI/UX and APIs.">
+  <meta property="og:url" content="https://dimitriskourkoutas.gr/">
+  <meta property="og:image" content="https://dimitriskourkoutas.gr/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Dimitris Kourkoutas, Full Stack Software Engineer, shown in a VS Code style editor">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Structured data: tells search engines who this site is about -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dimitris Kourkoutas",
+    "alternateName": "Dimitrios Kourkoutas",
+    "jobTitle": "Full Stack Software Engineer",
+    "description": "Full stack software engineer in Thessaloniki, Greece. I create modern applications and automate business tasks, from database design to UI/UX and APIs.",
+    "url": "https://dimitriskourkoutas.gr/",
+    "image": "https://dimitriskourkoutas.gr/og-image.png",
+    "email": "mailto:dimitriskourkoutas@yahoo.gr",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Thessaloniki",
+      "addressCountry": "GR"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Thessaly"
+    },
+    "knowsAbout": [
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "React",
+      "MySQL",
+      "Java",
+      "Python",
+      "C",
+      "Full stack web development"
+    ],
+    "sameAs": [
+      "https://github.com/DimitrisKourk",
+      "https://www.linkedin.com/in/dimitriskourkoutas"
+    ]
+  }
+  </script>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +78,7 @@
   <link rel="stylesheet" href="./styles/contact.css">
   <link rel="stylesheet" href="./styles/doom.css">
   <link rel="stylesheet" href="./styles/projects.css">
+  <link rel="stylesheet" href="./styles/cv.css">
 
   <script src="./scripts/doom.js" defer></script> 
   <script src="./scripts/files.js" defer></script>
@@ -37,6 +90,7 @@
   <script src="./scripts/activity-bar.js" defer></script>
   <script src="./scripts/editor.js" defer></script>
   <script src="./scripts/projects.js" defer></script>
+  <script src="./scripts/cv.js" defer></script>
 </head>
 <body>
   <div class="app">
@@ -124,6 +178,12 @@
                             <span class="explorer__icon"><i class="devicon-javascript-plain colored"></i></span>
                             <span class="explorer__name">projects.js</span>
                         </a>
+                    </li>
+                    <li>
+                        <a href="#cv" class="explorer__file">
+                        <span class="explorer__icon"><i class="codicon codicon-file-pdf file-icon--pdf"></i></span>
+                        <span class="explorer__name">CV.pdf</span>
+                        </a>
                     </li>                
                 </ul>
             </div>
@@ -180,13 +240,13 @@
 
 <span class="tok-control">import</span> <span class="tok-punct">{</span> <span class="tok-variable">createPortfolio</span> <span class="tok-punct">}</span> <span class="tok-control">from</span> <span class="tok-string">"./portfolio.js"</span><span class="tok-punct">;</span>
 
-<span class="tok-keyword">const</span> <span class="tok-variable">name</span> <span class="tok-punct">=</span> <span class="tok-string">"Dimitrios Kourkoutas"</span><span class="tok-punct">;</span>
+<span class="tok-keyword">const</span> <span class="tok-variable">name</span> <span class="tok-punct">=</span> <span class="tok-string">"Dimitris Kourkoutas"</span><span class="tok-punct">;</span>
 
 <span class="tok-keyword">async</span> <span class="tok-keyword">function</span> <span class="tok-function">welcome</span><span class="tok-punct">(</span><span class="tok-variable">name</span><span class="tok-punct">)</span> <span class="tok-punct">{</span>
   <span class="tok-keyword">const</span> <span class="tok-variable">information</span> <span class="tok-punct">=</span> <span class="tok-control">await</span> <span class="tok-function">fetch</span><span class="tok-punct">(</span><span class="tok-string">`https://api.portfolio.dev/v1/users/</span><span class="tok-keyword">${</span><span class="tok-variable">name</span><span class="tok-keyword">}</span><span class="tok-string">`</span><span class="tok-punct">)</span>    
   <span class="tok-punct">.</span><span class="tok-function">then</span><span class="tok-punct">((</span><span class="tok-variable">response</span><span class="tok-punct">)</span> <span class="tok-keyword">=&gt;</span> <span class="tok-variable">response</span><span class="tok-punct">.</span><span class="tok-function">json</span><span class="tok-punct">())</span>
     <span class="tok-punct">.</span><span class="tok-function">then</span><span class="tok-punct">((</span><span class="tok-variable">data</span><span class="tok-punct">)</span> <span class="tok-keyword">=&gt;</span> <span class="tok-punct">({</span>
-      <span class="tok-variable">name</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">name</span><span class="tok-punct">,</span>           <span class="tok-comment">// "Dimitrios Kourkoutas"</span>
+      <span class="tok-variable">name</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">name</span><span class="tok-punct">,</span>           <span class="tok-comment">// "Dimitris Kourkoutas"</span>
       <span class="tok-variable">title</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">title</span><span class="tok-punct">,</span>         <span class="tok-comment">// "Full Stack Software Engineer"</span>
       <span class="tok-variable">mail</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">mail</span><span class="tok-punct">,</span>           <span class="tok-comment">// "dimitriskourkoutas@yahoo.gr"</span>
       <span class="tok-variable">linkedin</span><span class="tok-punct">:</span> <span class="tok-variable">data</span><span class="tok-punct">.</span><span class="tok-property">linkedin</span><span class="tok-punct">,</span>   <span class="tok-comment">// "linkedin.com/in/dimitriskourkoutas</span>
@@ -216,7 +276,7 @@
                         <div class="home__divider"></div>
                         <p class="home__description">
                             I build web applications end to end, from the database to the interface.
-                            Short sentence about what you enjoy building and the stack you use.
+                            Mostly with Node.js, Express, React and MySQL, from client websites to SaaS platforms.
                         </p>
 
                         <div class="home__actions">
@@ -244,7 +304,7 @@
                         <header class="about__header">
                         <div>
                             <p class="about__comment">&lt;!-- about me --&gt;</p>
-                            <h1 class="about__name">Dimitris Kourkoutas</h1>
+                            <h2 class="about__name">Dimitris Kourkoutas</h2>
                             <p class="about__role">Junior Full Stack Software Engineer</p>
                             <p class="about__location"><span class="about__dot"></span>Thessaloniki, Greece</p>
                         </div>
@@ -426,7 +486,7 @@
                     <!-- ===== contact.json ===== -->
 <article class="editor-view contact" data-file="contact" hidden>
   <div class="contact__container">
-    <h1 class="contact__title">Get in touch</h1>
+    <h2 class="contact__title">Get in touch</h2>
     <p class="contact__intro">
       I'm open to new opportunities, freelance projects and collaborations.
       The fastest way to reach me is by email.
@@ -458,14 +518,51 @@
               <div class="projects__container">
                 <header class="projects__header">
                   <p class="projects__comment">// projects</p>
-                  <h1 class="projects__title">Projects</h1>
+                  <h2 class="projects__title">Projects</h2>
                   <p class="projects__intro">
                     A selection of things I've built, from client websites to full-stack platforms.
                     More on my <a href="https://github.com/DimitrisKourk" target="_blank" rel="noopener noreferrer">GitHub</a>.
                   </p>
                 </header>
 
-                <div class="projects__grid"></div>
+                <div class="projects__grid">
+                  <!-- Shown only without JavaScript (and to crawlers that don't run it).
+                       Keep in sync with data/projects.json -->
+                  <noscript>
+                    <ul class="projects__noscript">
+                    <li><a href="https://github.com/DimitrisKourk/broker2broker">broker2broker</a> — B2B platform where verified real-estate brokers share property listings and build partner networks.</li>
+                    <li><a href="https://github.com/DimitrisKourk/photography-job-planner">photography-job-planner</a> — Job management system for a photography studio: quotes, jobs, payments and financial dashboards. Sanitized demo version.</li>
+                    <li><a href="https://github.com/DimitrisKourk/chef-for-crews">chef-for-crews</a> — Client website for a freelance chef's culinary business: restaurant service, catering, private dinners and consulting.</li>
+                    <li><a href="https://github.com/DimitrisKourk/delivery-management-system">delivery-management-system</a> — Desktop app that tracks delivery drivers and their orders with a barcode/QR scanner.</li>
+                    <li><a href="https://github.com/DimitrisKourk/arctic-monkeys-site">arctic-monkeys-site</a> — Fan website for Arctic Monkeys with an admin panel for managing songs and links.</li>
+                    <li><a href="https://github.com/DimitrisKourk/thesis">thesis</a> — BSc thesis (University of Thessaly, 2024): AI tools in game development and Unreal Engine for deep reinforcement learning.</li>
+                    </ul>
+                  </noscript>
+                </div>
+            </div>
+            </article>
+            <!-- ===== CV.pdf (the browser's own PDF viewer in an iframe, loaded by scripts/cv.js) ===== -->
+            <article class="editor-view cv" data-file="cv" hidden>
+              <header class="cv__bar">
+                <span class="cv__title"><i class="codicon codicon-file-pdf file-icon--pdf"></i> CV.pdf</span>
+                <div class="cv__actions">
+                  <a href="./CV.pdf" class="button button--secondary" target="_blank" rel="noopener noreferrer">
+                    <i class="codicon codicon-link-external"></i> Open in new tab
+                  </a>
+                  <a href="./CV.pdf" class="button button--primary" download="Dimitris-Kourkoutas-CV.pdf">
+                    <i class="codicon codicon-cloud-download"></i> Download
+                  </a>
+                </div>
+              </header>
+
+              <div class="cv__viewer">
+                <iframe class="cv__frame" data-src="./CV.pdf#view=FitH" title="CV of Dimitris Kourkoutas (PDF)"></iframe>
+
+                <!-- Phones and tablets usually can't show a PDF inside a page -->
+                <div class="cv__fallback">
+                  <i class="codicon codicon-file-pdf file-icon--pdf"></i>
+                  <p>Your browser can't preview the PDF here.<br>Open it in a new tab or download it with the buttons above.</p>
+                </div>
               </div>
             </article>
 

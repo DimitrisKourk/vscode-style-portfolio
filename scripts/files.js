@@ -20,6 +20,7 @@
     { id: "about",    name: "about.html",   language: "HTML",           icon: '<i class="devicon-html5-plain colored"></i>' },
     { id: "contact",  name: "contact.json", language: "JSON",           icon: "{...}" },
     { id: "projects", name: "projects.js",  language: "JavaScript",     icon: '<i class="devicon-javascript-plain colored"></i>' },
+        { id: "cv",       name: "CV.pdf",       language: "PDF",            icon: '<i class="codicon codicon-file-pdf file-icon--pdf"></i>' },
     // Easter egg: only reachable through the terminal (ls / open doom.exe)
     { id: "doom",     name: "doom.exe",     language: "DOS Executable", icon: '<i class="codicon codicon-game file-icon--doom"></i>', hidden: true }
   ].map(Object.freeze);

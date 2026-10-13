@@ -1,0 +1,5 @@
+# Everything is public; the DOOM player opts out itself with <meta name="robots" content="noindex">
+User-agent: *
+Allow: /
+
+Sitemap: https://dimitriskourkoutas.gr/sitemap.xml

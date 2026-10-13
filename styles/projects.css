@@ -111,6 +111,17 @@
 .project-card__actions .button--secondary {
   color: rgba(255, 255, 255, 0.85);
 }
+/* Plain list for visitors/crawlers without JavaScript */
+.projects__noscript {
+  grid-column: 1 / -1;
+  padding-left: 1.25em;
+  font-size: 0.9em;
+  line-height: 1.8;
+}
+
+.projects__noscript a {
+  color: var(--accent);
+}
 
 /* Shown only if data/projects.json can't be loaded */
 .projects__error {
