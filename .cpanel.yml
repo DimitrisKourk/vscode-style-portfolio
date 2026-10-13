@@ -10,7 +10,7 @@ deployment:
     # Page, icons and SEO files
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp favicon.svg favicon.ico apple-touch-icon.png og-image.png $DEPLOYPATH
-    - /bin/cp robots.txt sitemap.xml $DEPLOYPATH
+    - /bin/cp robots.txt sitemap.xml .htaccess $DEPLOYPATH
     - /bin/cp CV.pdf $DEPLOYPATH
 
     # Folders

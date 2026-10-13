@@ -1,0 +1,70 @@
+# ===== dimitriskourkoutas.gr =====
+
+# ----- No folder listings (e.g. /scripts/ shows 403 instead of a file list) -----
+Options -Indexes
+
+# ----- One address for the site: https://dimitriskourkoutas.gr/ -----
+# http:// and www. are redirected in a single hop (matches the canonical tag).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Let cPanel AutoSSL renew the certificate over plain http
+  RewriteRule ^\.well-known/ - [L]
+
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://dimitriskourkoutas.gr%{REQUEST_URI} [R=301,L]
+
+  # Block hidden files and folders (.git, .cpanel.yml...) if they ever end up here
+  RewriteRule (^|/)\. - [F]
+</IfModule>
+
+# ----- File types Apache may not know -----
+<IfModule mod_mime.c>
+  AddType image/svg+xml .svg
+  AddType application/json .json
+  AddType application/zip .jsdos
+</IfModule>
+
+# ----- Compress text files before sending them -----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript text/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml image/svg+xml
+</IfModule>
+
+# ----- Browser caching -----
+# CSS/JS/JSON have no version numbers in their names, so they are cached briefly:
+# changes show up for returning visitors within a day.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault                        "access plus 1 day"
+
+  ExpiresByType text/html               "access plus 0 seconds"
+  ExpiresByType application/json        "access plus 1 hour"
+  ExpiresByType text/css                "access plus 1 day"
+  ExpiresByType application/javascript  "access plus 1 day"
+  ExpiresByType text/javascript         "access plus 1 day"
+  ExpiresByType application/pdf         "access plus 1 day"
+  ExpiresByType text/plain              "access plus 1 day"
+  ExpiresByType application/xml         "access plus 1 day"
+
+  ExpiresByType image/png               "access plus 1 month"
+  ExpiresByType image/svg+xml           "access plus 1 month"
+  ExpiresByType image/x-icon            "access plus 1 month"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 month"
+  ExpiresByType application/zip         "access plus 1 month"
+</IfModule>
+
+# ----- Security headers -----
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  # Only this site may put its pages in an iframe (the CV and DOOM tabs are same-origin)
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # HTML is always re-checked so a new deploy shows up right away
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
