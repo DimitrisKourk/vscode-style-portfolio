@@ -4,16 +4,15 @@
     "Hi! I'm Dimitris Kourkoutas, a junior full stack developer.",
     "I enjoy building things end to end, from the database to the UI."
   ],
-  "skills": [
-    "Languages:  Java, JavaScript, HTML, CSS, SQL",
-    "Backend:    Spring Boot, Node.js",
-    "Frontend:   React",
-    "Tools:      Git, Linux, VS Code"
-  ],
-  "projects": [
-    "project-one  — short description",
-    "project-two  — short description",
-    "Open projects.js in the editor for details."
+    "skills": [
+    "Languages:   JavaScript, Java, Python, C, C++, SQL",
+    "Frontend:    React, Vite, HTML, CSS",
+    "Backend:     Node.js, Express, REST APIs, WebSockets, Webhooks",
+    "Databases:   MySQL, PostgreSQL, Redis/Valkey, MongoDB",
+    "Desktop:     Python + PySimpleGUI",
+    "Systems:     POSIX threads, semaphores, Unix sockets, fork(), malloc/free",
+    "AI & Games:  Machine learning in Python, Unreal Engine, deep reinforcement learning",
+    "Tools:       Git, Linux, Postman, LaTeX, software testing, AI-assisted coding"
   ],
   "contact": [
     "Email:    dimitriskourkoutas@yahoo.gr",

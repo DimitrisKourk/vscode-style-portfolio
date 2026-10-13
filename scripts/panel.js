@@ -1,8 +1,7 @@
 /* ===== panel.js — terminal panel =====
    Commands are plain data in data/commands.json:
    typing a key prints its value (a string = one line, an array = one line per item).
-   Only "help" and "clear" are built in. */
-
+   Only "help", "clear", "ls", "open <file>" and "projects" are built in. */
 (function () {
   "use strict";
 
@@ -17,8 +16,7 @@
 const panelToggle = document.getElementById("panel-toggle");   // checked = minimized
 
   const COMMANDS_URL = "./data/commands.json";
-  const BUILT_INS = ["help", "clear", "open", "ls"];
-
+  const BUILT_INS = ["help", "clear", "ls", "open", "projects"];
   const welcomeHTML = output.innerHTML;   // kept to restore on "New Terminal"
   let commands = null;                    // filled once the JSON has loaded
   let history = [];                       // previous commands, oldest first
@@ -110,6 +108,11 @@ const panelToggle = document.getElementById("panel-toggle");   // checked = mini
 
     if (name === "open" || name.startsWith("open ")) {
       openCommand(name.slice(4).trim());
+      return;
+    }
+
+    if (name === "projects") {
+      listProjects();
       return;
     }
 
@@ -205,7 +208,28 @@ const panelToggle = document.getElementById("panel-toggle");   // checked = mini
       String(date.getHours()).padStart(2, "0") + ":" +
       String(date.getMinutes()).padStart(2, "0");
   }
+    // ----- "projects": printed from data/projects.json (loaded by projects.js) -----
+  function listProjects() {
+    Portfolio.getProjects()
+      .then((projects) => {
+        printLine(projects.length + " projects — type 'open projects.js' for the full view", "terminal__muted");
 
+        projects.forEach((project) => {
+          printLine(" ");
+          printLine(project.name + (project.status ? "  (" + project.status.toLowerCase() + ")" : ""), "terminal__user");
+          printLine("  " + project.description);
+          if (project.tech && project.tech.length) {
+            printLine("  " + project.tech.map(Portfolio.techLabel).join(" · "), "terminal__muted");
+          }
+          if (project.repo) printLine("  repo: " + project.repo);
+          if (project.demo) printLine("  demo: " + project.demo);
+        });
+      })
+      .catch(() => {
+        printLine("projects: could not load ./data/projects.json", "terminal__error");
+      })
+      .then(scrollToBottom);   // the list arrives after the submit handler already scrolled
+  }
   // ----- "open <file>": open a file in the editor -----
   // Accepts the full name ("about.html") or just the id ("about"), any case
   function openCommand(arg) {

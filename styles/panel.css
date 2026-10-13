@@ -105,6 +105,9 @@
 .terminal__error {
   color: #f14c4c;
 }
+.terminal__muted {
+  color: rgba(204, 204, 204, 0.55);
+}
 
 .terminal__help {
   color: #e5e510;

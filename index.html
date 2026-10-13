@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="./styles/about.css">
   <link rel="stylesheet" href="./styles/contact.css">
   <link rel="stylesheet" href="./styles/doom.css">
+  <link rel="stylesheet" href="./styles/projects.css">
 
   <script src="./scripts/doom.js" defer></script> 
   <script src="./scripts/files.js" defer></script>
@@ -32,6 +33,7 @@
   <script src="./scripts/panel.js" defer></script>
   <script src="./scripts/activity-bar.js" defer></script>
   <script src="./scripts/editor.js" defer></script>
+  <script src="./scripts/projects.js" defer></script>
 </head>
 <body>
   <div class="app">
@@ -239,8 +241,8 @@
                         <header class="about__header">
                         <div>
                             <p class="about__comment">&lt;!-- about me --&gt;</p>
-                            <h1 class="about__name">Dimitrios Kourkoutas</h1>
-                            <p class="about__role">Full Stack Software Engineer</p>
+                            <h1 class="about__name">Dimitris Kourkoutas</h1>
+                            <p class="about__role">Junior Full Stack Software Engineer</p>
                             <p class="about__location"><span class="about__dot"></span>Thessaloniki, Greece</p>
                         </div>
 
@@ -440,6 +442,22 @@
     </div>
   </div>
 </article>
+
+            <!-- ===== projects.js (cards drawn by scripts/projects.js from data/projects.json) ===== -->
+            <article class="editor-view projects" data-file="projects" hidden>
+              <div class="projects__container">
+                <header class="projects__header">
+                  <p class="projects__comment">// projects</p>
+                  <h1 class="projects__title">Projects</h1>
+                  <p class="projects__intro">
+                    A selection of things I've built, from client websites to full-stack platforms.
+                    More on my <a href="https://github.com/DimitrisKourk" target="_blank" rel="noopener noreferrer">GitHub</a>.
+                  </p>
+                </header>
+
+                <div class="projects__grid"></div>
+              </div>
+            </article>
 
                     <!-- ===== doom.exe (easter egg, opened from the terminal) ===== -->
                     <article class="editor-view doom" data-file="doom" hidden>

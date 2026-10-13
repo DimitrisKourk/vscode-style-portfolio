@@ -1,0 +1,45 @@
+[
+  {
+    "name": "broker2broker",
+    "description": "B2B platform where verified real-estate brokers share property listings and build partner networks.",
+    "tech": ["react", "vite", "nodejs", "express", "mysql", "redis"],
+    "repo": "https://github.com/DimitrisKourk/broker2broker",
+    "demo": "",
+    "status": "In progress"
+  },
+  {
+    "name": "photography-job-planner",
+    "description": "Job management system for a photography studio: quotes, jobs, payments and financial dashboards. Sanitized demo version.",
+    "tech": ["nodejs", "express", "mysql"],
+    "repo": "https://github.com/DimitrisKourk/photography-job-planner",
+    "demo": ""
+  },
+  {
+    "name": "chef-for-crews",
+    "description": "Client website for a freelance chef's culinary business: restaurant service, catering, private dinners and consulting.",
+    "tech": ["html", "css", "javascript"],
+    "repo": "https://github.com/DimitrisKourk/chef-for-crews",
+    "demo": "https://chefforcrews.nl/"
+  },
+  {
+    "name": "delivery-management-system",
+    "description": "Desktop app that tracks delivery drivers and their orders with a barcode/QR scanner.",
+    "tech": ["python", "PySimpleGUI", "mysql"],
+    "repo": "https://github.com/DimitrisKourk/delivery-management-system",
+    "demo": ""
+  },
+  {
+    "name": "arctic-monkeys-site",
+    "description": "Fan website for Arctic Monkeys with an admin panel for managing songs and links.",
+    "tech": ["nodejs", "express", "mysql", "html", "css", "javascript"],
+    "repo": "https://github.com/DimitrisKourk/arctic-monkeys-site",
+    "demo": ""
+  },
+  {
+    "name": "thesis",
+    "description": "BSc thesis (University of Thessaly, 2024): AI tools in game development and Unreal Engine for deep reinforcement learning.",
+    "tech": ["unrealengine", "latex"],
+    "repo": "https://github.com/DimitrisKourk/thesis",
+    "demo": ""
+  }
+]

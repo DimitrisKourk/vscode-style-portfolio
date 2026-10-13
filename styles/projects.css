@@ -1,0 +1,138 @@
+/* ===== projects.js view ===== */
+
+.projects__container {
+  max-width: 60em;
+  margin: 0 auto;
+  padding: 3em 2.5em 4em;
+}
+
+/* ----- Header ----- */
+.projects__header {
+  margin-bottom: 2.5em;
+  padding-bottom: 2em;
+  border-bottom: thin solid var(--border-subtle);
+}
+
+/* JS-style comment above the title (like home.jsx and about.html) */
+.projects__comment {
+  margin-bottom: 0.5em;
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 0.9em;
+  color: #6a9955;
+}
+
+.projects__title {
+  font-size: 2.25em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.projects__intro {
+  margin-top: 0.75em;
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+.projects__intro a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.projects__intro a:hover {
+  text-decoration: underline;
+}
+
+/* ----- Card grid ----- */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25em;
+}
+
+/* Cards are stacked with margin elsewhere; the grid gap handles spacing here */
+.projects__grid .card + .card {
+  margin-top: 0;
+}
+
+.project-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  width: 100%;
+}
+
+.project-card__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: "Ubuntu Mono", monospace;
+  overflow-wrap: anywhere;               /* long repo names wrap instead of overflowing */
+}
+
+/* Codicons ship with a fixed 16px size; override with em */
+.project-card__title .codicon {
+  font-size: 1em;
+  color: var(--text-faint);
+}
+
+/* Tech chips: icon + label */
+.project-card__tech {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.project-card__tech i {
+  font-size: 1.1em;
+}
+
+/* Buttons sit at the bottom so they line up across a row of cards */
+.project-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  margin-top: auto;
+  padding-top: 0.6em;
+}
+
+.project-card__actions .button {
+  padding: 0.6em 1.1em;
+  font-size: 0.8em;
+  text-decoration: none;                 /* beat the ".card a" link styles */
+}
+
+.project-card__actions .button--primary {
+  color: #ffffff;
+}
+
+.project-card__actions .button--secondary {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Shown only if data/projects.json can't be loaded */
+.projects__error {
+  grid-column: 1 / -1;
+  font-size: 0.95em;
+}
+
+.projects__error a {
+  color: var(--accent);
+}
+
+/* ----- Small screens ----- */
+@media (max-width: 40em) {
+  .projects__container {
+    padding: 2.5em 1.25em 3em;
+  }
+
+  .projects__title {
+    font-size: 1.75em;
+  }
+
+  .projects__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
