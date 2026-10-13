@@ -324,6 +324,41 @@ const panelToggle = document.getElementById("panel-toggle");   // checked = mini
       if (action) action();
     });
   });
+
+    // ----- Phone keyboard: keep the prompt visible -----
+  // Touch-only devices (same check as doom.js / cv.js)
+  const touchOnly = window.matchMedia("(hover: none) and (pointer: coarse)");
+  const workbench = panel.closest(".workbench");
+  const viewport = window.visualViewport;   // the part of the page not covered by the keyboard
+
+  // Shrink the app to the visible area. Browsers that support
+  // interactive-widget=resizes-content (Chrome/Firefox on Android) already do this,
+  // so the ratio stays 1 there; Safari on iOS needs it.
+  function fitToViewport() {
+    if (!viewport) return;
+    const ratio = Math.min(1, viewport.height / window.innerHeight);
+    document.documentElement.style.setProperty("--viewport-ratio", ratio.toFixed(4));
+    window.scrollTo(0, 0);              // undo the page shift iOS adds when the keyboard opens
+    scrollToBottom();
+  }
+
+  if (viewport) {
+    viewport.addEventListener("resize", fitToViewport);
+  }
+
+  input.addEventListener("focus", () => {
+    if (!touchOnly.matches) return;
+    workbench.classList.add("workbench--typing");
+    // Wait for the keyboard animation, then make sure the prompt line is in view
+    setTimeout(() => {
+      fitToViewport();
+      form.scrollIntoView({ block: "end" });
+    }, 300);
+  });
+
+  input.addEventListener("blur", () => {
+    workbench.classList.remove("workbench--typing");
+  });
     // ----- Public API (used by the activity bar) -----
 
   // Restore the panel and put the cursor in the prompt

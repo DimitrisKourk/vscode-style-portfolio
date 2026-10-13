@@ -9,7 +9,8 @@
 
 html,
 body {
-  height: 100%;
+  /* --viewport-ratio is set by panel.js while a phone keyboard is open (1 = full height) */
+  height: calc(100% * var(--viewport-ratio, 1));
   overflow: hidden;
 }
 
